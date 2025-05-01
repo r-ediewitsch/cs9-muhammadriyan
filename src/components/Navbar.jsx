@@ -24,6 +24,13 @@ export default function Header({ activeTab, setActiveTab, user, isLoggedIn }) {
     window.location.href = '/';
   };
 
+  const getMenuItems = () => {
+    if (isLoggedIn) {
+      return ['Latest Release', 'Product', 'About Us'];
+    }
+    return ['New Releases', 'Bestsellers', 'Genres', 'About Store'];
+  };
+
   return (
     <header className="bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -33,16 +40,16 @@ export default function Header({ activeTab, setActiveTab, user, isLoggedIn }) {
 
         <nav className="hidden md:block ml-auto mr-8">
           <ul className="flex space-x-12">
-            {['Home', 'Profile', 'Contact', 'About Me'].map((category) => (
+            {getMenuItems().map((category) => (
               <li key={category}>
                 <a
-                  href={`#${category}`}
+                  href={`#${category.toLowerCase().replace(' ', '-')}`}
                   className={`font-medium hover:text-white transition-colors ${
                     activeTab === category ? 'text-white' : 'text-blue-100'
                   }`}
-                  onClick={() => handleNavClick(category)}s
+                  onClick={() => handleNavClick(category)}
                 >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  {category}
                 </a>
               </li>
             ))}
@@ -119,16 +126,16 @@ export default function Header({ activeTab, setActiveTab, user, isLoggedIn }) {
         <div className="md:hidden bg-white/95 backdrop-blur-sm shadow-lg rounded-b-lg overflow-hidden">
           <nav className="container mx-auto px-4 py-2">
             <ul className="space-y-3">
-              {['home', 'profile', 'contact', 'About Me'].map((category) => (
+              {getMenuItems().map((category) => (
                 <li key={category} className="border-b border-gray-100 pb-2">
                   <a
-                    href={`#${category}`}
+                    href={`#${category.toLowerCase().replace(' ', '-')}`}
                     className={`block py-2 font-medium hover:text-black ${
                       activeTab === category ? 'text-black' : 'text-gray-700'
                     }`}
                     onClick={() => handleNavClick(category)}
                   >
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {category}
                   </a>
                 </li>
               ))}

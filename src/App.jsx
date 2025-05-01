@@ -36,8 +36,8 @@ function Home() {
       {isLoggedIn && (
         <CardSection 
           id="card-section"
-          title="Card Components"
-          subtitle="This a card component section for testing"
+          title="Our Products"
+          subtitle="A music collection by Hoshimachi Suisei"
           results={response.results}
         />
       )}

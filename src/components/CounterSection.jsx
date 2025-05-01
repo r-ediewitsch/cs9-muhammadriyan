@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import image from '../assets/panduan-emas.jpg';
+import image from '../assets/panduan-emas.png';
 import { getItem } from '../actions/Item.action';
 
 export default function CounterSection() {
@@ -64,10 +64,10 @@ export default function CounterSection() {
             <div className="p-12 text-center h-full flex flex-col justify-between">
               <div>
                 <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-6">
-                  Welcome to Our Store
+                  Welcome to Atmosphères Music Store
                 </h2>
                 <p className="text-gray-600 text-xl mb-10">
-                  Please login to explore our amazing products
+                  Experience the celestial voice of our shooting star
                 </p>
               </div>
 
@@ -83,11 +83,11 @@ export default function CounterSection() {
                       strokeLinecap="round" 
                       strokeLinejoin="round" 
                       strokeWidth="1.5" 
-                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" 
+                      d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"
                     />
                   </svg>
                   <p className="text-gray-500 text-lg max-w-lg mx-auto">
-                    Discover our extensive collection of products with competitive prices and exceptional quality
+                    Explore exclusive albums and singles from our beloved idol, Hoshimachi Suisei
                   </p>
                 </div>
               </div>
@@ -116,63 +116,65 @@ export default function CounterSection() {
         }}
       />
       <div className="container mx-auto px-4">
-        <div className="relative max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center bg-white bg-clip-text text-transparent mb-4"> {/* Changed color and reduced mb-8 to mb-4 */}
-            Latest Release
-          </h2>
-          <div className="overflow-hidden relative rounded-lg shadow-lg">
-            <div
-              className="flex transition-transform duration-1000 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {window.innerWidth >= 768 ? (
-                // Desktop view - 2 items per slide
-                Array.from({ length: Math.ceil(items.length / 2) }).map((_, slideIndex) => (
-                  <div key={slideIndex} className="w-full flex-shrink-0">
-                    <div className="hidden md:grid grid-cols-2 gap-2 p-2">
-                      {items.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, index) => (
-                        <div key={index} className="relative aspect-square overflow-hidden rounded-lg group">
-                          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400" />
-                          <img
-                            src={item.image_url}
-                            alt="Product"
-                            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      ))}
+        <div className="bg-transparent rounded-xl shadow-xl">
+          <div className="relative max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold text-center bg-white bg-clip-text text-transparent mb-4">
+              Latest Release
+            </h2>
+            <div className="overflow-hidden relative rounded-lg shadow-lg">
+              <div
+                className="flex transition-transform duration-1000 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {window.innerWidth >= 768 ? (
+                  // Desktop view - 2 items per slide
+                  Array.from({ length: Math.ceil(items.length / 2) }).map((_, slideIndex) => (
+                    <div key={slideIndex} className="w-full flex-shrink-0">
+                      <div className="hidden md:grid grid-cols-2 gap-2 p-2">
+                        {items.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, index) => (
+                          <div key={index} className="relative aspect-square overflow-hidden rounded-lg group">
+                            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400" />
+                            <img
+                              src={item.image_url}
+                              alt="Product"
+                              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                // Mobile view - 1 item per slide
-                items.map((item, index) => (
-                  <div key={index} className="w-full flex-shrink-0 p-2">
-                    <div className="relative aspect-square overflow-hidden rounded-lg group">
-                      <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400" />
-                      <img
-                        src={item.image_url}
-                        alt="Product"
-                        className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
-                      />
+                  ))
+                ) : (
+                  // Mobile view - 1 item per slide
+                  items.map((item, index) => (
+                    <div key={index} className="w-full flex-shrink-0 p-2">
+                      <div className="relative aspect-square overflow-hidden rounded-lg group">
+                        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400" />
+                        <img
+                          src={item.image_url}
+                          alt="Product"
+                          className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))
-              )}
+                  ))
+                )}
+              </div>
             </div>
-          </div>
 
-          <button
-            onClick={prevSlide}
-            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-transparent text-white text-5xl hover:text-blue-300 transition-all duration-300 z-10"
-          >
-            ‹
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-transparent text-white text-5xl hover:text-blue-300 transition-all duration-300 z-10"
-          >
-            ›
-          </button>
+            <button
+              onClick={prevSlide}
+              className="absolute top-1/2 -left-24 transform -translate-y-1/2 bg-transparent text-white text-5xl hover:text-blue-300 transition-all duration-300 z-10"
+            >
+              ‹
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute top-1/2 -right-24 transform -translate-y-1/2 bg-transparent text-white text-5xl hover:text-blue-300 transition-all duration-300 z-10"
+            >
+              ›
+            </button>
+          </div>
         </div>
       </div>
     </section>
